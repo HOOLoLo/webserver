@@ -1,5 +1,6 @@
 click==7.1.1
 Flask==1.1.2
+Flask-Cors==3.0.8
 itsdangerous==1.1.0
 Jinja2==2.11.1
 MarkupSafe==1.1.1
@@ -13,5 +14,6 @@ PyRect==0.1.4
 PyScreeze==0.1.26
 PyTweening==1.0.3
 selenium==3.141.0
+six==1.14.0
 urllib3==1.25.8
 Werkzeug==1.0.1

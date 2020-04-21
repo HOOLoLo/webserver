@@ -40,7 +40,7 @@ def favicon():
 if __name__=='__main__':
     CORS(app,supports_credential=True)
     hostname = socket.gethostname()
-    # 获取本机IP
+    # 获取本机IP1111
     ip = socket.gethostbyname(hostname)
     print(ip)
     app.run(host=ip,port=7777,debug=False)

@@ -17,17 +17,18 @@ time.sleep(3)
 
 pyautogui.hotkey('F11')
 
-csv_data=pd.read_csv('https://raw.githubusercontent.com/HOOLoLo/webserver/master/content.csv')
-print(csv_data)
 dic={}
-for index,value in enumerate(csv_data['name']):
-
-    dic[value]=csv_data['path'][index]
-print(dic)
+def getList():
+    csv_data=pd.read_csv('https://raw.githubusercontent.com/HOOLoLo/webserver/master/content.csv')
+    print(csv_data)
+    for index,value in enumerate(csv_data['name']):
+        dic[value]=csv_data['path'][index]
+    print(dic)
 
 @app.route('/url/<pageName>')
 def getOrder(pageName):
     print(pageName)
+    getList()
     driver.get(dic[pageName])
     # driver.manage().window().fullscreen
     return 'done'

@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.options import Options
 import socket
 import pyautogui
 import time
+import pandas as pd
 app = Flask(__name__)
 
 chrome_options=Options()
@@ -15,13 +16,19 @@ driver=webdriver.Chrome('chromedriver.exe',chrome_options=chrome_options)
 time.sleep(3)
 
 pyautogui.hotkey('F11')
+
+csv_data=pd.read_csv('content.csv')
+print(csv_data)
+dic={}
+for index,value in enumerate(csv_data['name']):
+
+    dic[value]=csv_data['path'][index]
+print(dic)
+
 @app.route('/url/<pageName>')
 def getOrder(pageName):
     print(pageName)
-
-    driver.get(pageName)
-
-
+    driver.get(dic[pageName])
     # driver.manage().window().fullscreen
     return 'done'
 

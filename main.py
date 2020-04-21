@@ -17,7 +17,7 @@ time.sleep(3)
 
 pyautogui.hotkey('F11')
 
-csv_data=pd.read_csv('content.csv')
+csv_data=pd.read_csv('https://raw.githubusercontent.com/HOOLoLo/webserver/master/content.csv')
 print(csv_data)
 dic={}
 for index,value in enumerate(csv_data['name']):

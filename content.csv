@@ -11,3 +11,4 @@ welcome,file://mypassport/Storage/welcome/welcome.html
 窗户内容,file://MyPassport/Storage/窗户/窗户.html
 河流图,http://192.168.0.161:5555/stream
 气泡图,http://192.168.0.161:5555/bubble
+直方图，http://192.168.0.161:5555/bar

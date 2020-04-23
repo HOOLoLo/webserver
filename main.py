@@ -12,6 +12,7 @@ chrome_options=Options()
 # chrome_options.add_argument("--kiosk")
 chrome_options.add_experimental_option('useAutomationExtension',False)
 chrome_options.add_experimental_option("excludeSwitches", ['enable-automation']);
+chrome_options.add_argument("--allow-file-access-from-files")
 driver=webdriver.Chrome('chromedriver.exe',chrome_options=chrome_options)
 time.sleep(3)
 

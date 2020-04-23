@@ -4,7 +4,8 @@ ML,file://mypassport/Storage/cityhappiness/workflow/ML.html
 DTW,file://mypassport/Storage/cityhappiness/workflow/DTW.html
 news,file://mypassport/Storage/cityhappiness/workflow/news.html
 ITS,http://192.168.0.161:5555
-Cov,http://cov.aiiyx.cn/
+疫情静态,http://cov.aiiyx.cn/
+疫情动图,http://192.168.0.161:5555/line
 海报,file://mypassport/Storage/cityhappiness/workflow/海报/1.html
 welcome,file://mypassport/Storage/welcome/welcome.html
 welcome2,file://mypassport/Storage/welcome/welcome2.html

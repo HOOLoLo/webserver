@@ -37,7 +37,6 @@ def getOrder(pageName):
     if pageName == 'NASA':
         time.sleep(1)
         pyautogui.click(x=500, y=500)
-
     # driver.manage().window().fullscreen
     return 'done'
 @app.route('/volume/<order>')
@@ -46,6 +45,13 @@ def setVolume(order):
         pyautogui.keyDown('volumeup')
     elif order=='down':
         pyautogui.keyDown('volumedown')
+
+@app.route('/mousescroll/<order>')
+def setScroll(order):
+    if order=='front':
+        pyautogui.scroll(1)
+    elif order=='back':
+        pyautogui.scroll(-1)
 
 
 

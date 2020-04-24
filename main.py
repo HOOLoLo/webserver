@@ -46,7 +46,7 @@ def setVolume(order):
     elif order=='down':
         pyautogui.keyDown('volumedown')
 
-@app.route('/mousescroll/<order>')
+@app.route('/scroll/<order>')
 def setScroll(order):
     if order=='front':
         pyautogui.scroll(1)

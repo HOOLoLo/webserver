@@ -31,9 +31,12 @@ def getOrder(pageName):
     print(pageName)
     getList()
     driver.get(dic[pageName])
-    if pageName=='音乐' or pageName=='NASA':
+    if pageName=='音乐' :
         time.sleep(1)
         pyautogui.click(x=0, y=500)
+    if pageName == 'NASA':
+        time.sleep(1)
+        pyautogui.click(x=500, y=500)
 
     # driver.manage().window().fullscreen
     return 'done'

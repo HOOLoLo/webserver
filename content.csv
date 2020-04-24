@@ -8,6 +8,7 @@ ITS(融合2),http://192.168.0.161:5555
 疫情静态(融合3),http://cov.aiiyx.cn/
 疫情视频(融合4),file://mypassport/Storage/疫情视频/covidvideo.html
 介绍流程白色,file:///C:/Users/keshihua/Desktop/流程/介绍流程2.html
+Kmeans,file://mypassport/Storage/Kmeans/index_three.html
 海报,file://mypassport/Storage/cityhappiness/workflow/海报/1.html
 welcome,file://mypassport/Storage/welcome/welcome.html
 welcome2,file://mypassport/Storage/welcome/welcome2.html
@@ -16,4 +17,3 @@ welcome2,file://mypassport/Storage/welcome/welcome2.html
 河流图,http://192.168.0.161:5555/stream
 气泡图,http://192.168.0.161:5555/city
 直方图,http://192.168.0.161:5555/bar
-Kmeans,file://mypassport/Storage/Kmeans/index_three.html

@@ -29,15 +29,22 @@ def getList():
 @app.route('/url/<pageName>')
 def getOrder(pageName):
     print(pageName)
-
     getList()
     driver.get(dic[pageName])
-    if pageName=='音乐':
+    if pageName=='音乐' or pageName=='NASA':
         time.sleep(1)
-        pyautogui.click(x=500, y=500)
+        pyautogui.click(x=0, y=500)
 
     # driver.manage().window().fullscreen
     return 'done'
+@app.route('/volume/<order>')
+def setVolume(order):
+    if order=='up':
+        pyautogui.keyDown('volumeup')
+    elif order=='down':
+        pyautogui.keyDown('volumedown')
+
+
 
 @app.route('/favicon.ico')
 def favicon():

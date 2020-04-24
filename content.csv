@@ -3,7 +3,7 @@ MIC,file://mypassport/Storage/cityhappiness/workflow/MIC.html
 ML,file://mypassport/Storage/cityhappiness/workflow/ML.html
 DTW,file://mypassport/Storage/cityhappiness/workflow/DTW.html
 news,file://mypassport/Storage/cityhappiness/workflow/news.html
-音乐(融合1),file://mypassport/Storage/musicBar/bar3d-music-visualization.html
+音乐,file://mypassport/Storage/musicBar/bar3d-music-visualization.html
 ITS(融合2),http://192.168.0.161:5555
 疫情静态(融合3),http://cov.aiiyx.cn/
 疫情视频(融合4),file://mypassport/Storage/疫情视频/covidvideo.html

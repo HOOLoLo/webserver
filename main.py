@@ -13,10 +13,6 @@ chrome_options=Options()
 chrome_options.add_experimental_option('useAutomationExtension',False)
 chrome_options.add_experimental_option("excludeSwitches", ['enable-automation']);
 chrome_options.add_argument("--allow-file-access-from-files")
-driver=webdriver.Chrome('chromedriver.exe',chrome_options=chrome_options)
-time.sleep(3)
-
-pyautogui.hotkey('F11')
 
 dic={}
 def getList():
@@ -25,6 +21,13 @@ def getList():
     for index,value in enumerate(csv_data['name']):
         dic[value]=csv_data['path'][index]
     print(dic)
+
+@app.route('/openChrome')
+def openChrome():
+    global driver
+    driver = webdriver.Chrome('chromedriver.exe', chrome_options=chrome_options)
+    time.sleep(3)
+    pyautogui.hotkey('F11')
 
 @app.route('/url/<pageName>')
 def getOrder(pageName):

@@ -6,6 +6,8 @@ import socket
 import pyautogui
 import time
 import pandas as pd
+import os
+
 app = Flask(__name__)
 
 chrome_options=Options()
@@ -13,8 +15,8 @@ chrome_options=Options()
 chrome_options.add_experimental_option('useAutomationExtension',False)
 chrome_options.add_experimental_option("excludeSwitches", ['enable-automation']);
 chrome_options.add_argument("--allow-file-access-from-files")
-
 dic={}
+
 def getList():
     csv_data=pd.read_csv('https://raw.githubusercontent.com/HOOLoLo/webserver/master/content.csv')
     print(csv_data)
@@ -61,6 +63,9 @@ def setScroll(order):
 @app.route('/favicon.ico')
 def favicon():
     return
+@app.route('/shutdown')
+def shutdown():
+    os.system('shutdown -s -t 00')
 
 if __name__=='__main__':
     CORS(app,supports_credential=True)

@@ -1,5 +1,5 @@
 from flask_cors import CORS
-from selenium import webdriver
+
 from flask import Flask
 from selenium.webdriver.chrome.options import Options
 import socket
@@ -7,6 +7,10 @@ import pyautogui
 import time
 import pandas as pd
 import os
+from selenium import webdriver
+
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 app = Flask(__name__)
 
@@ -16,6 +20,16 @@ chrome_options.add_experimental_option('useAutomationExtension',False)
 chrome_options.add_experimental_option("excludeSwitches", ['enable-automation']);
 chrome_options.add_argument("--allow-file-access-from-files")
 dic={}
+global musicDriver
+
+# mdriver=webdriver.Chrome('chromedriver.exe', chrome_options=chrome_options)
+# mdriver.get('file:///D:/Desktop/展示视频/backgroundmusic.html')
+# mdriver.find_element()
+
+IeDriver=webdriver.Edge()
+# with webdriver.Edge() as IeDriver:
+IeDriver.get('file:///D:/Desktop/展示视频/backgroundmusic.html')
+
 
 def getList():
     csv_data=pd.read_csv('https://raw.githubusercontent.com/HOOLoLo/webserver/master/content.csv')
@@ -30,6 +44,18 @@ def openChrome():
     driver = webdriver.Chrome('chromedriver.exe', chrome_options=chrome_options)
     time.sleep(3)
     pyautogui.hotkey('F11')
+
+@app.route('/openMusic')
+def openMusic():
+    global musicDriver
+    musicDriver = webdriver.Chrome('chromedriver.exe', chrome_options=chrome_options)
+    time.sleep(3)
+
+@app.route('/stopMusic')
+def stopMusic():
+    global musicDriver
+    del musicDriver
+
 
 @app.route('/url/<pageName>')
 def getOrder(pageName):

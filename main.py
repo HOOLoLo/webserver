@@ -26,9 +26,8 @@ global musicDriver
 # mdriver.get('file:///D:/Desktop/展示视频/backgroundmusic.html')
 # mdriver.find_element()
 
-IeDriver=webdriver.Edge()
 # with webdriver.Edge() as IeDriver:
-IeDriver.get('file:///D:/Desktop/展示视频/backgroundmusic.html')
+
 
 
 def getList():
@@ -38,6 +37,9 @@ def getList():
         dic[value]=csv_data['path'][index]
     print(dic)
 
+
+
+
 @app.route('/openChrome')
 def openChrome():
     global driver
@@ -45,31 +47,32 @@ def openChrome():
     time.sleep(3)
     pyautogui.hotkey('F11')
 
-@app.route('/openMusic')
-def openMusic():
-    global musicDriver
-    musicDriver = webdriver.Chrome('chromedriver.exe', chrome_options=chrome_options)
-    time.sleep(3)
-
-@app.route('/stopMusic')
-def stopMusic():
-    global musicDriver
-    del musicDriver
 
 
 @app.route('/url/<pageName>')
 def getOrder(pageName):
     print(pageName)
     getList()
-    driver.get(dic[pageName])
-    if pageName=='音乐' :
-        time.sleep(1)
-        pyautogui.click(x=0, y=500)
-    if pageName == 'NASA':
-        time.sleep(1)
-        pyautogui.click(x=500, y=500)
-    # driver.manage().window().fullscreen
-    return 'done'
+    global musicDriver
+    if pageName=='openMusic':
+
+        musicDriver = webdriver.Edge()
+        musicDriver.get(dic[pageName])
+        return 'done'
+    elif pageName=='stopMusic':
+
+        musicDriver.close()
+        return 'done'
+    else:
+        driver.get(dic[pageName])
+        if pageName=='音乐' :
+            time.sleep(1)
+            pyautogui.click(x=0, y=500)
+        if pageName == 'NASA':
+            time.sleep(1)
+            pyautogui.click(x=500, y=500)
+        # driver.manage().window().fullscreen
+        return 'done'
 @app.route('/volume/<order>')
 def setVolume(order):
     if order=='up':

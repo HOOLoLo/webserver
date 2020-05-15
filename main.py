@@ -1,5 +1,4 @@
 from flask_cors import CORS
-
 from flask import Flask
 from selenium.webdriver.chrome.options import Options
 import socket
@@ -8,6 +7,11 @@ import time
 import pandas as pd
 import os
 from selenium import webdriver
+import subprocess
+from subprocess import check_output
+output = check_output('netsh wlan connect 公管1075G', shell=True)
+print(output)
+time.sleep(5)
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -28,6 +32,8 @@ global musicDriver
 
 # with webdriver.Edge() as IeDriver:
 
+# print(socket.getfqdn(socket.gethostname()))
+
 
 
 def getList():
@@ -36,9 +42,6 @@ def getList():
     for index,value in enumerate(csv_data['name']):
         dic[value]=csv_data['path'][index]
     print(dic)
-
-
-
 
 @app.route('/openChrome')
 def openChrome():
@@ -55,9 +58,9 @@ def getOrder(pageName):
     getList()
     global musicDriver
     if pageName=='openMusic':
-
         musicDriver = webdriver.Edge()
         musicDriver.get(dic[pageName])
+        musicDriver.minimize_window()
         return 'done'
     elif pageName=='stopMusic':
 
@@ -71,8 +74,13 @@ def getOrder(pageName):
         if pageName == 'NASA':
             time.sleep(1)
             pyautogui.click(x=500, y=500)
+        if pageName[-1]=='v':
+            time.sleep(1)
+            pyautogui.click(x=500, y=500)
         # driver.manage().window().fullscreen
         return 'done'
+
+
 @app.route('/volume/<order>')
 def setVolume(order):
     if order=='up':
@@ -96,10 +104,22 @@ def favicon():
 def shutdown():
     os.system('shutdown -s -t 00')
 
+@app.route('/cmd/<command>')
+def cmd(command):
+    subprocess.call(command,shell=True)
+
+
+
+
 if __name__=='__main__':
     CORS(app,supports_credential=True)
-    hostname = socket.gethostname()
-    # 获取本机IP1111
-    ip = socket.gethostbyname(hostname)
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+
+    # hostname = socket.gethostname()
+    # # 获取本机IP1111
+    # ip = socket.gethostbyname(hostname)
+
+    ip=s.getsockname()[0]
     print(ip)
     app.run(host=ip,port=7777,debug=False)
